@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import MainDashboard from './components/StudentDashboard/MainDashboard';
 import Assignments from './components/StudentDashboard/boards/Assignments';
 import StudentResult from './components/StudentDashboard/boards/StudentResult';
+import Dashboard from './components/Dashboard/Boards/Dashboard';
 
 // import Login from './components/Users/Login'
 
@@ -19,6 +20,7 @@ function App() {
         <Route path='/admin/students' element={<ListStudents/>}/>
         <Route path='/admin/student/:id' element={<StudentsInfo/>}/>
         <Route path='/admin/events' element={<Events/>}/>
+        <Route path='/admin/' element={<Dashboard/>}/>
       
       </Route>
       {/* the parts for the student */}

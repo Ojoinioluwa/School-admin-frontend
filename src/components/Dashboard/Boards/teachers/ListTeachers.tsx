@@ -34,43 +34,12 @@ function ListTeachers({
   
   
   return (
-    <Box sx={{ width: "100%", height: "100%" }}>
-      {/* Header with title and actions */}
-      <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mb: 2 }}>
-        <Typography variant="h5">Students</Typography>
+    <div className="bg-white">
+      {/* the header and the actions such as the search and filter fucntions and also add teachers*/}
 
-        <Box sx={{ display: "flex", gap: 1 }}>
+      {/* the list of the teachers and the actions that can be performed */}
 
-            <IconButton>
-            <CiFilter />
-            </IconButton>
-
-        </Box>
-      </Box>
-
-      <ul className="w-full">
-        {/* Table Headers */}
-        <li className="flex justify-around p-2.5 font-bold bg-gray-200 text-sm">
-          <p className="basis-2/6 text-left">Name</p>
-          <p className="basis-1/6 text-left">ID</p>
-        </li>
-
-        {/* Student Rows */}
-        {teachers.map((teacher, index) => (
-          <li
-            key={teacher.id}
-            onClick={() => handleDetails(teacher.id)}
-            className={`flex items-center justify-around px-2 py-3 text-sm cursor-pointer hover:bg-blue-950 hover:text-white ${
-              index % 2 === 0 ? "bg-white" : "bg-gray-50"
-            }`}
-          >
-            <Avatar sx={{ width: 24, height: 24, mr: 2 }} />
-            <p className="basis-2/6 text-left">{teacher.name}</p>
-            <p className="basis-1/6 text-left">{teacher.id}</p>
-          </li>
-        ))}
-      </ul>
-    </Box>
+    </div>
   );
 }
 

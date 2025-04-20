@@ -6,10 +6,10 @@ import Sidebar from "./Sidebar";
 function MainDashboard() {
   return (
     <Stack direction={"row"}>
-      <Box sx={{ width: "150px", position: "fixed", top: 0, left: 0, zIndex: 10 }}>
+      <Box sx={{ width: "20%", position: "fixed", top: 0, left: 0, zIndex: 10 }}>
         <Sidebar />
       </Box>
-      <div className="w-[100%] ml-[140px]">
+      <div className="w-[100%] h-full ml-[20%] bg-gray-100">
         <Outlet />
       </div>
       

@@ -53,7 +53,7 @@ const data = [
 
 function DashboardCharts() {
   return (
-    <ResponsiveContainer width="80%" height="70%">
+    <ResponsiveContainer width="100%" height="90%">
     <BarChart
       barSize={10}
       barGap={0}
@@ -72,6 +72,7 @@ function DashboardCharts() {
         align="right"      
         verticalAlign="top"
         wrapperStyle={{
+
             top: 0,  
             right: 30, 
         }}
@@ -80,8 +81,8 @@ function DashboardCharts() {
       <XAxis dataKey="name" />
       <YAxis  />
       <Tooltip />
-      <Bar dataKey="students" fill="#172554" activeBar={<Rectangle   />} />
-      <Bar dataKey="teachers" fill="red" activeBar={<Rectangle  />} />
+      <Bar dataKey="students" fill="#fee685" activeBar={<Rectangle   />} />
+      <Bar dataKey="teachers" fill="#bedbff" activeBar={<Rectangle  />} />
     </BarChart>
   </ResponsiveContainer>
   )

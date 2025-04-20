@@ -1,6 +1,6 @@
 // import React from 'react'
 
-import { FormControl, Input, InputLabel, MenuItem, Select, TextField } from "@mui/material"
+import { FormControl,  InputLabel, MenuItem, Select, TextField } from "@mui/material"
 import { useState } from "react"
 
 function AddStudents() {

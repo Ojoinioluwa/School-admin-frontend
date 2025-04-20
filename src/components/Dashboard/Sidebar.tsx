@@ -24,7 +24,7 @@ function Sidebar() {
         display: "flex",
         flexDirection: "column",
         px: "10px",
-        backgroundColor: "#f6f6f6",
+        backgroundColor: "#fff",
         height: "100vh",
         pb: "15px",
         // overflow: "hidden"
