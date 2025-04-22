@@ -10,7 +10,7 @@ interface Assignment {
     status: string,
     submitted: boolean,
     grade: string | null,
-    uploadLink: string
+    uploadLink: string | null
 }
 
 
@@ -80,7 +80,8 @@ function Assignments() {
       ]
       
   return (
-    <div className="mx-5 px-3 py-2">
+    <div className="mx-5 px-3 py-2 min-h-[100vh]">
+      <div className="flex justify-between">
         <h4 className="text-2xl font-bold text-blue-950 p-6">All Assignments</h4>
         <FormControl className="w-[100px]" >
             <InputLabel >Status</InputLabel>
@@ -90,6 +91,7 @@ function Assignments() {
                 <MenuItem>due</MenuItem>
             </Select>
         </FormControl>
+      </div>
 
         {/* listing the assignments */}
         <ul className="w-[100%] p-2 -">

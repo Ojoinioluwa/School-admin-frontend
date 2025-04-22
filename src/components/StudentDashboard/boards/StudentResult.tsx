@@ -72,7 +72,7 @@ function StudentResult() {
 
 
   return (
-    <div className="mx-5 px-3 py-2">
+    <div className="mx-5 px-3 py-2 min-h-[100vh]">
         <div className="flex justify-between items-center ">
             <h4 className="text-2xl font-bold text-blue-950 p-6">Students Result</h4>
             <Stack spacing={3} direction={"row"}>

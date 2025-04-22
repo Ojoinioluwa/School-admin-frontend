@@ -14,7 +14,7 @@ interface Teacher{
 }
 
 
-function ListTeachers() {
+function ListStudentsAdmin() {
 
   const teachers: Teacher[] = [
     {
@@ -221,7 +221,7 @@ function ListTeachers() {
       </div>
 
       {/* div for the listing of teachers */}
-      <div className="scroll w-full h-[85vh] rounded-lg overflow-y-scroll scroll-smooth">
+      <div className="scroll w-full h-[85vh] rounded-lg overflow-y-scroll scroll-smooth scrollbar-hide">
 
         <ul className="w-full h-full  ">
           <li className="bg-blue-100 w-full p-4 flex justify-around items-center">
@@ -253,4 +253,4 @@ function ListTeachers() {
   )
 }
 
-export default ListTeachers
+export default ListStudentsAdmin

@@ -24,7 +24,7 @@ function Sidebar() {
         display: "flex",
         flexDirection: "column",
         px: "10px",
-        backgroundColor: "#fff",
+        backgroundColor: "black",
         height: "100vh",
         pb: "15px",
         // overflow: "hidden"
@@ -127,34 +127,49 @@ function Sidebar() {
             </Button>
             {/* finance */}
             <Button
-              onClick={() => handleChange("finance")}
+              onClick={() => handleChange("annoucements")}
               startIcon={<MdMoney />}
               size="small"
               fullWidth
-              variant={focused === "finance" ? "contained" : "text"}
+              variant={focused === "annoucements" ? "contained" : "text"}
               sx={{
                 justifyContent: "flex-start",
-                backgroundColor: focused === "finance" ? "#e0e0e0" : "transparent",
-                color: focused === "finance" ? "black" : "gray",
+                backgroundColor: focused === "annoucements" ? "#e0e0e0" : "transparent",
+                color: focused === "annoucements" ? "black" : "gray",
                 textTransform: "none",
               }}
             >
-              Finance
+              Annoucements
             </Button>
             <Button
-              onClick={() => handleChange("chats")}
+              onClick={() => handleChange("department")}
+              startIcon={<MdMoney />}
+              size="small"
+              fullWidth
+              variant={focused === "department" ? "contained" : "text"}
+              sx={{
+                justifyContent: "flex-start",
+                backgroundColor: focused === "department" ? "#e0e0e0" : "transparent",
+                color: focused === "department" ? "black" : "gray",
+                textTransform: "none",
+              }}
+            >
+              Department
+            </Button>
+            <Button
+              onClick={() => handleChange("courses")}
               startIcon={<PiChatsCircle />}
               size="small"
               fullWidth
-              variant={focused === "chats" ? "contained" : "text"}
+              variant={focused === "courses" ? "contained" : "text"}
               sx={{
                 justifyContent: "flex-start",
-                backgroundColor: focused === "chats" ? "#e0e0e0" : "transparent",
-                color: focused === "chats" ? "black" : "gray",
+                backgroundColor: focused === "courses" ? "#e0e0e0" : "transparent",
+                color: focused === "courses" ? "black" : "gray",
                 textTransform: "none",
               }}
             >
-              Chats
+              Courses
             </Button>
           </Stack>
         </Box>

@@ -20,7 +20,7 @@ import { PieCharts } from "./students/StudentsChart";
 
 export default function Dashboard() {
   return (
-    <div className="w-full h-[100%] flex flex-col gap-4 p-3 bg-gray-100">
+    <div className="w-full h-[100%] flex flex-col gap-4 bg-gray-100">
       {/* the top and main div contain almost all infomation */}
       <div className="w-full h-fit flex">
         {/* first div section */}
