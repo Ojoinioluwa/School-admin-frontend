@@ -15,7 +15,6 @@ function Sidebar() {
     const handleChange = (value: string) => {
         setFocused(value);
         navigate(`/admin/${value}`);
-
       };
 
   return (
@@ -24,7 +23,7 @@ function Sidebar() {
         display: "flex",
         flexDirection: "column",
         px: "10px",
-        backgroundColor: "black",
+        backgroundColor: "white",
         height: "100vh",
         pb: "15px",
         // overflow: "hidden"

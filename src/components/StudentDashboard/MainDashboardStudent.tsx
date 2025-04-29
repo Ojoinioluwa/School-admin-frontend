@@ -3,7 +3,7 @@ import { Box, Stack } from "@mui/material";
 import { Outlet } from "react-router-dom";
 import Sidebar from "./Sidebar";
 
-function MainDashboard() {
+function MainDashboardStudent() {
   return (
     <Stack direction={"row"}>
       <Box sx={{ width: "20%", position: "fixed", top: 0, left: 0, zIndex: 10 }}>
@@ -17,4 +17,4 @@ function MainDashboard() {
   );
 }
 
-export default MainDashboard;
+export default MainDashboardStudent;

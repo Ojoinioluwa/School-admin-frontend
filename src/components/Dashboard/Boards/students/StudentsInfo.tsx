@@ -1,6 +1,6 @@
-import { Avatar, Box, Button, FormControl, InputLabel, MenuItem, Select, Typography } from "@mui/material";
+import { Avatar, Button, FormControl, InputLabel, MenuItem, Select, Typography } from "@mui/material";
 import { useParams } from 'react-router-dom';
-import { PieCharts, StudentsChart } from "./StudentsChart";
+import { StudentsChart } from "./StudentsChart";
 
 interface Student {
   id: string;

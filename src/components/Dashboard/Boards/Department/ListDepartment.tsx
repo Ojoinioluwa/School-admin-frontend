@@ -1,15 +1,28 @@
 // import React from 'react'
-
+import { useQuery } from "@tanstack/react-query"
 import { Button, Modal } from "@mui/material";
 import { useState } from "react";
 import AddDepartment from "./AddDepartment";
 import DepartmentCard from "./DepartmentCard";
+import { ListAllDepartmentsAPI } from "../../../../Service/Admin/adminService"
+import Loading from "../../../State/Loading";
+
 
 function ListDepartment() {
+
+  const {data, isLoading} = useQuery({
+    queryKey: ["GetAllDept"],
+    queryFn: ListAllDepartmentsAPI
+  })
+
+  console.log(data)
 
   const [open, setOpen] = useState(false);
   const handleAdd = ()=> {
     setOpen(!open);
+  }
+  if(isLoading){
+    return <Loading/>
   }
     
   return (
@@ -34,12 +47,8 @@ function ListDepartment() {
 
         </Modal>
       </div>
-        <div className="w-full h-full flex gap-3 flex-wrap">
-            <DepartmentCard/> 
-            <DepartmentCard/> 
-            <DepartmentCard/> 
-            <DepartmentCard/> 
-            <DepartmentCard/> 
+        <div className="w-full h-full flex gap-3 flex-wrap items-center justify-center">
+           {data.depts.map((dept)=> (<DepartmentCard deptCode={dept.code} deptName={dept.name} deptHead={dept.headOfDepartment} img={dept.profileImage} />))}
         </div>
     </div>
   )

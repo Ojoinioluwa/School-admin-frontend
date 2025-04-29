@@ -1,24 +1,38 @@
 import {  Icon  } from "@mui/material";
 import { PiStudentFill } from "react-icons/pi";
-// import { FaChalkboardTeacher } from "react-icons/fa";
+import { FaChalkboardTeacher } from "react-icons/fa";
 import { RiParentLine } from "react-icons/ri";
 // import { LiaWalletSolid } from "react-icons/lia";
 import DashboardCharts from "./DashboardCharts";
 // import { IoIosNotifications, IoIosSearch } from "react-icons/io";
-import { PieCharts } from "./students/StudentsChart";
-
+// import { PieCharts } from "./students/StudentsChart";
+// import { IconType } from "react-icons/lib";
+import { useQuery } from "@tanstack/react-query";
+import { getBasicInfo } from "../../../Service/Admin/adminService";
+import ChartComponent from "./students/GenderChart";
+import Loading from "../../State/Loading";
 // make use of the component and ensure to put it in another folder
 
-// const StatCard = ({ icon, value, title, bg }: {i}) => (
-//   <div className={`w-[150px] h-[100px] px-3 py-2 rounded-lg ${bg}`}>
-//     <Icon>{icon}</Icon>
-//     <p className="font-semibold text-xl">{value}</p>
-//     <p className="font-light text-xs">{title}</p>
-//   </div>
-// );
 
 
 export default function Dashboard() {
+  const StatCard = ({ icon, value, title, bg }: { icon: React.ReactNode, value: number, title: string, bg: string }) => (
+    <div className={`w-[150px] h-[100px] px-3 rounded-lg ${bg}`}>
+      {icon}
+      <p className="font-semibold text-xl">{value}</p>
+      <p className="font-light text-lg">{title}</p>
+    </div>
+  );
+
+  const {data, isError, error, isLoading} = useQuery({
+    queryKey: ["BasicInfo"],
+    queryFn: getBasicInfo
+  })
+
+  
+  if(isLoading){
+    return  <Loading/>
+  }
   return (
     <div className="w-full h-[100%] flex flex-col gap-4 bg-gray-100">
       {/* the top and main div contain almost all infomation */}
@@ -26,51 +40,19 @@ export default function Dashboard() {
         {/* first div section */}
         <div className="w-[70%] h-[100%] flex flex-col gap-3 ">
           {/* the cards to display the info about the school suchas the number of students, teacher and staff */}
-          <div className="w-full h-fit flex justify-center gap-3">
-            {/* the students card */}
-            <div className="w-[150px] h-[100px] px-3 py-2 rounded-lg bg-amber-200 hover:bg-amber-300">
-              <Icon>
-                <PiStudentFill/>
-              </Icon>
-              <p className="font-semibold text-xl">126,654</p>
-              <p className="font-ligh text-xs">Students</p>
-            </div>
-
-            {/* the teachers card */}
-            <div className="w-[150px] h-[100px] px-3 py-2 rounded-lg bg-purple-200 hover:bg-purple-300">
-              <Icon>
-                <PiStudentFill/>
-              </Icon>
-              <p className="font-semibold text-xl">12,345</p>
-              <p className="font-ligh text-xs">Teachers</p>
-            </div>
-
-            {/* the staffs card */}
-            <div className="w-[150px] h-[100px] px-3 py-2 rounded-lg bg-amber-200 hover:bg-amber-300">
-              <Icon>
-                <PiStudentFill/>
-              </Icon>
-              <p className="font-semibold text-xl">23,900</p>
-              <p className="font-ligh text-xs">Staffs</p>
-            </div>
-
-            {/* the Staffs card */}
-            <div className="w-[150px] h-[100px] px-3 py-2 rounded-lg bg-purple-200 hover:bg-purple-300">
-              <Icon>
-                <PiStudentFill/>
-              </Icon>
-              <p className="font-semibold text-xl">98,900</p>
-              <p className="font-ligh text-xs">Awards</p>
-            </div>
-
+          <div className="w-full h-fit flex justify-start gap-3 bg-pu">
+          
+            <StatCard icon={<PiStudentFill className="size-10"/>} value={data.numOfStudents} title={"Student"} bg="bg-amber-200"/>
+            <StatCard icon={<FaChalkboardTeacher className="size-10"/>} value={data.numOfTeachers} title={"Teachers"} bg="bg-purple-200"/>
+            <StatCard icon={<PiStudentFill className="size-10"/>} value={data.numOfStudents} title={"Student"} bg="bg-amber-200"/>
+            <StatCard icon={<FaChalkboardTeacher className="size-10"/>} value={data.numOfTeachers} title={"Teachers"} bg="bg-purple-200"/>
           </div>
 
           {/* the visualization for he ratio of male students to the female students and the attandenace  bar graph */}
           <div className="w-full h-[400px] flex gap-2">
             {/* the pie charts section */}
-              <div className="w-[30%] h-full bg-white rounded-lg ml-3 p-4">
-                  <p className="text-2xl font-light">Students</p>
-                <PieCharts/>
+              <div className="w-[40%] h-full bg-white rounded-lg ml-3 p-4">
+                  <ChartComponent genderData={data.studentData}/>
               </div>
             {/* the attendance section */}
             <div className="w-[70%] h-full bg-white rounded-lg ml-3 p-4">
