@@ -1,57 +1,64 @@
-// import React from 'react'
-import { useQuery } from "@tanstack/react-query"
+import { useQuery } from "@tanstack/react-query";
 import { Button, Modal } from "@mui/material";
 import { useState } from "react";
 import AddDepartment from "./AddDepartment";
 import DepartmentCard from "./DepartmentCard";
-import { ListAllDepartmentsAPI } from "../../../../Service/Admin/adminService"
+import { ListAllDepartmentsAPI } from "../../../../Service/Admin/adminService";
 import Loading from "../../../State/Loading";
 
-
 function ListDepartment() {
-
-  const {data, isLoading} = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ["GetAllDept"],
-    queryFn: ListAllDepartmentsAPI
-  })
-
-  console.log(data)
+    queryFn: ListAllDepartmentsAPI,
+  });
 
   const [open, setOpen] = useState(false);
-  const handleAdd = ()=> {
-    setOpen(!open);
-  }
-  if(isLoading){
-    return <Loading/>
-  }
-    
+  const toggleModal = () => setOpen((prev) => !prev);
+
+  if (isLoading) return <Loading />;
+
   return (
-    <div className="h-fit w-full p-4 flex flex-col gap-3">
-      <div className="w-full h-[50px] flex justify-between">
-        <input className="w-[40vw] rounded-2xl outline-0 p-3 border border-gray-500" placeholder="Search Courses" type="search" />
-        <Button onClick={handleAdd} variant="contained">+ Add Department</Button>
-        <Modal
-          open={open}
-          onClose={handleAdd}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-          
-        >
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
-                w-[30%] max-h-[95vh] bg-white rounded-lg shadow-2xl 
-                  overflow-y-scroll scrollbar-hide">
-            <AddDepartment/>
-          </div>
-
-
-
-        </Modal>
+    <div className="w-full h-fit px-4 py-6 flex flex-col gap-6">
+      {/* Header Section */}
+      <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-4">
+        <input
+          className="w-full sm:w-[50%] max-w-md p-3 rounded-xl border border-gray-300 outline-none focus:ring-2 focus:ring-blue-500 transition"
+          placeholder="Search Departments"
+          type="search"
+        />
+        <Button onClick={toggleModal} variant="contained">
+          + Add Department
+        </Button>
       </div>
-        <div className="w-full h-full flex gap-3 flex-wrap items-center justify-center">
-           {data.depts.map((dept)=> (<DepartmentCard deptCode={dept.code} deptName={dept.name} deptHead={dept.headOfDepartment} img={dept.profileImage} />))}
+
+      {/* Modal */}
+      <Modal
+        open={open}
+        onClose={toggleModal}
+        aria-labelledby="add-department-modal"
+        aria-describedby="form-to-add-department"
+      >
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
+          w-[90%] sm:w-[70%] md:w-[50%] lg:w-[35%] max-h-[95vh] bg-white rounded-xl shadow-2xl 
+          overflow-y-auto scrollbar-hide p-4">
+          <AddDepartment />
         </div>
+      </Modal>
+
+      {/* Department Cards */}
+      <div className="w-full flex flex-wrap justify-center gap-6">
+        {data?.depts?.map((dept) => (
+          <DepartmentCard
+            key={dept.code}
+            deptCode={dept.code}
+            deptName={dept.name}
+            deptHead={dept.headOfDepartment}
+            img={dept.profileImage}
+          />
+        ))}
+      </div>
     </div>
-  )
+  );
 }
 
-export default ListDepartment
+export default ListDepartment;

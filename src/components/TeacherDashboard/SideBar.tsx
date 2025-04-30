@@ -25,7 +25,7 @@ export default function TemporaryDrawer() {
   const [focused, setFocused] = React.useState("dashboard")
   const handleChange = (value: string) => {
       setFocused(value);
-      navigate(`/admin/${value}`);
+      navigate(`/teacher/${value}`);
     };
 
     const sideBar = [

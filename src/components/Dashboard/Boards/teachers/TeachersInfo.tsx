@@ -1,112 +1,67 @@
-import { Avatar, Box } from "@mui/material";
+import { Avatar, Box, Card, CardContent, Typography } from "@mui/material";
 
 interface Teacher {
-    id: number,
-    name: string,
-    email: string,
-    department: string,
-    status: string,
-    hireDate: string,
-  
-  }
-
-function TeachersInfo({detail}:{ detail: Teacher}) {
-
- console.log(detail)
-  return (
-    <div className="w-[100%] bg-gray-100 h-[100vh] shadow-lg py-2 px-4 ">
-      <h5 className="text-2xl text-blue-950 font-[500]">Personal Information</h5>
-      {/* avatar and the name of the student */}
-    <Box className="flex flex-col  items-center p-6">
-      <Avatar sx={{width: "100px", height: "100px"}} src="https://avatar.iran.liara.run/public/77"/>
-      <h5 className="pt-2 text-xl text-blue-950 font-semibold">{detail.name}</h5>
-    </Box>
-    {/* basic student infiormation */}
-      <div>
-        <h4 className="text-blue-950 text-xl font-[700]">Basic Details</h4>
-        {/* individyal info */}
-        <div className="flex flex-row justify-between py-1">
-          {/* the name of the info to be displayed */}
-          <div className="w-1/2">
-            <p className="font-light text-base text-gray-400"> Class: </p>
-          </div>
-          {/* the info to be displayed */}
-          <div className="w-1/2">
-            <p className="text-sm font-light">{detail.department}</p>
-          </div>
-        </div>
-        {/* individyal info */}
-        <div className="flex flex-row justify-between py-1">
-          {/* the name of the info to be displayed */}
-          <div className="w-1/2">
-            <p className="font-light text-base text-gray-400"> Email: </p>
-          </div>
-          {/* the info to be displayed */}
-          <div className="w-1/2">
-            <p className="text-xs font-light text-wrap">{detail.email}</p>
-          </div>
-        </div>
-        {/* individyal info */}
-        <div className="flex flex-row justify-between py-1">
-          {/* the name of the info to be displayed */}
-          <div className="w-1/2">
-            <p className="font-light text-base text-gray-400"> StudentId: </p>
-          </div>
-          {/* the info to be displayed */}
-          <div className="w-1/2">
-            <p className="text-xs font-light text-wrap">{detail.id}</p>
-          </div>
-        </div>
-        {/* individyal info */}
-        <div className="flex flex-row justify-between py-1">
-          {/* the name of the info to be displayed */}
-          <div className="w-1/2">
-            <p className="font-light text-base text-gray-400"> Age: </p>
-          </div>
-          {/* the info to be displayed */}
-          <div className="w-1/2">
-            <p className="text-xs font-light text-wrap">{detail.status}</p>
-          </div>
-        </div>
-        {/* individyal info */}
-        <div className="flex flex-row justify-between py-1">
-          {/* the name of the info to be displayed */}
-          <div className="w-1/2">
-            <p className="font-light text-base text-gray-400"> Email: </p>
-          </div>
-          {/* the info to be displayed */}
-          <div className="w-1/2">
-            <p className="text-xs font-light text-wrap">{detail.email}</p>
-          </div>
-        </div>
-        {/* individyal info */}
-        <div className="flex flex-row justify-between py-1">
-          {/* the name of the info to be displayed */}
-          <div className="w-1/2">
-            <p className="font-light text-base text-gray-400"> Address: </p>
-          </div>
-          {/* the info to be displayed */}
-          <div className="w-1/2">
-            <p className="text-xs font-light text-wrap">Lorem ipsum dolor sit amet consectetur.</p>
-          </div>
-        </div>
-        {/* individyal info */}
-        <div className="flex flex-row justify-between py-1">
-          {/* the name of the info to be displayed */}
-          <div className="w-1/2">
-            <p className="font-light text-base text-gray-400"> Hobbies: </p>
-          </div>
-          {/* the info to be displayed */}
-          <div className="w-1/2">
-            <p className="text-xs font-light text-wrap">Lorem ipsum dolor sit.</p>
-          </div>
-        </div>
-
-      </div>
-      {/* About the student */}
-      
-    </div>
-  )
+  id: number;
+  name: string;
+  email: string;
+  department: string;
+  status: string;
+  hireDate: string;
 }
 
-export default TeachersInfo
+function TeachersInfo() {
+
+  return (
+    <div className="w-full bg-gray-50 min-h-screen p-6">
+      <Card className="shadow-xl rounded-lg p-6">
+        <Typography variant="h5" className="text-blue-900 font-semibold mb-4">
+          Personal Information
+        </Typography>
+
+        {/* Avatar and Teacher's Name */}
+        <Box className="flex flex-col items-center p-6 mb-4 bg-white rounded-xl shadow-md">
+          <Avatar
+            sx={{ width: 100, height: 100, border: "2px solid #4A90E2" }}
+            src="https://avatar.iran.liara.run/public/77"
+          />
+          <Typography variant="h6" className="pt-2 text-blue-900 font-medium">
+            OJo inioluwa
+          </Typography>
+        </Box>
+
+        {/* Teacher's Basic Details */}
+        <CardContent>
+          <Typography variant="h6" className="text-blue-900 font-semibold mb-2">
+            Basic Details
+          </Typography>
+
+          {/* Information Rows */}
+          <div className="space-y-3">
+            <div className="flex justify-between">
+              <Typography className="text-gray-500">Department:</Typography>
+              <Typography className="text-gray-900">Computer Science</Typography>
+            </div>
+            <div className="flex justify-between">
+              <Typography className="text-gray-500">Email:</Typography>
+              <Typography className="text-gray-900 truncate">OJoinioluwa05@gmail.com</Typography>
+            </div>
+            <div className="flex justify-between">
+              <Typography className="text-gray-500">Teacher ID:</Typography>
+              <Typography className="text-gray-900">lkjhghvb</Typography>
+            </div>
+            <div className="flex justify-between">
+              <Typography className="text-gray-500">Status:</Typography>
+              <Typography className="text-gray-900">Active</Typography>
+            </div>
+            <div className="flex justify-between">
+              <Typography className="text-gray-500">Hire Date:</Typography>
+              <Typography className="text-gray-900">20234-132-24</Typography>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
+  );
+}
+
+export default TeachersInfo;

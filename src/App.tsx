@@ -15,11 +15,18 @@ import Annoucement from './components/Annoucements/Annoucement';
 import AddCourse from './components/Course/AddCourse';
 import AddDepartment from './components/Dashboard/Boards/Department/AddDepartment';
 import ListDepartment from './components/Dashboard/Boards/Department/ListDepartment';
-import ViewCourse from './components/Course/ViewCOurse';
+import ViewCourse from './components/Course/CourseInfoPage';
 import SchoolCalender from './components/Event/SchoolCalender';
 import Login from './components/Users/Login';
 import MainDashboardTeacher from './components/TeacherDashboard/MainDashboardTeacher';
 import TeacherDashboard from './components/TeacherDashboard/boards/TeacherDashboard';
+import CreateAssignments from './components/TeacherDashboard/boards/Assignments/CreateAssignments';
+import TeacherAssignments from './components/TeacherDashboard/boards/Assignments/TeacherAssignments';
+import CourseCard from './components/Course/CourseCard';
+import ClassesCard from './components/TeacherDashboard/boards/Classes/ClassesCard';
+import DepartmentInfo from './components/TeacherDashboard/boards/DepartmentInfo';
+import TeachersInfo from './components/Dashboard/Boards/teachers/TeachersInfo';
+import StudentProfilePage from './components/StudentDashboard/boards/Profile';
 
 // import Login from './components/Users/Login'
 
@@ -42,6 +49,7 @@ function App() {
         <Route path='/admin/courses/add' element={<AddCourse/>}/>
         <Route path='/admin/department/add' element={<AddDepartment/>}/>
         <Route path='/admin/courses/view' element={<ViewCourse/>}/>
+        <Route path='/admin/t' element={<TeachersInfo/>}/>
       
       </Route>
       {/* the parts for the student */}
@@ -51,15 +59,19 @@ function App() {
         <Route path='/student/dashboard' element={<StudentDashboard/>}/>
         <Route path='/student/course'  element={<ListCourse/>}/>
         <Route path='/student/calender'  element={<SchoolCalender/>}/>
+        <Route path='/student/profile'  element={<StudentProfilePage/>}/>
 
       </Route>
       {/* the parts for the student */}
       <Route path='/teacher' element={<MainDashboardTeacher/>}>
-        <Route path='/teacher/assignments' element={<Assignments/>}/>
         <Route path='/teacher/results' element={<StudentResult/>}/>
         <Route path='/teacher/dashboard' element={<TeacherDashboard/>}/>
         <Route path='/teacher/course'  element={<ListCourse/>}/>
+        <Route path='/teacher/annoucements' element={<Annoucement/>}/>
         <Route path='/teacher/calender'  element={<SchoolCalender/>}/>
+        <Route path='/teacher/Assignments'  element={<TeacherAssignments/>}/>
+        <Route path='/teacher/classes'  element={<ClassesCard/>}/>
+        <Route path='/teacher/department'  element={<DepartmentInfo/>}/>
 
       </Route>
       </Routes>
